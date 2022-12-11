@@ -1,5 +1,10 @@
 # Test Weather UI
 
+## Setup ENV variables
+
+1. Create a new file names `.env.local`, for example like this `cp .env.example .env.local`.
+2. Update the variables with the right values.
+
 ## Commands
 
 ```bash
@@ -27,11 +32,17 @@ yarn check:all
 
 ## Resources
 
+### Documentation
+
 - [Next.js](https://nextjs.org/docs/getting-started)
 - [React](https://reactjs.org/docs/getting-started.html)
 - [TypeScript](https://www.typescriptlang.org/docs/)
 - [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/)
 - [Material-UI](https://mui.com/getting-started/usage/)
+- [Google Map with React](https://developers.google.com/maps/documentation/javascript/react-map)
+
+### Misc
+
 - Cities data imported from [here](https://simplemaps.com/data/canada-cities)
 
 ## Instructions

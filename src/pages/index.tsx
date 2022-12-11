@@ -3,6 +3,8 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import React from 'react';
 
+import Map from '@/components/Map';
+
 const Home = (): JSX.Element => {
   return (
     <Container maxWidth="lg">
@@ -18,6 +20,8 @@ const Home = (): JSX.Element => {
         <Typography variant="h4" component="h1" gutterBottom>
           Test Weather UI
         </Typography>
+
+        <Map />
       </Box>
     </Container>
   );
