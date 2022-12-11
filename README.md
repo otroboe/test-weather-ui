@@ -12,8 +12,17 @@ yarn dev
 # Check ESLint errors
 yarn lint
 
+# Check for prettier errors
+yarn format:check
+
+# Fix the prettier errors
+yarn format
+
 # Build the app, checking TS issues
 yarn build
+
+# Check you code (ESLint + prettier + TS)
+yarn check:all
 ```
 
 ## Resources
