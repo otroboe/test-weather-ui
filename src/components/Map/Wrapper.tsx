@@ -33,8 +33,8 @@ const MapWrapper = ({ maxCities = 10 }: MapWrapperProps): JSX.Element => {
         }}
       >
         <Map center={center}>
-          {cities.map(({ lat, lng }, i) => (
-            <Marker key={i} position={{ lat, lng }} />
+          {cities.map((city, i) => (
+            <Marker key={i} city={city} />
           ))}
         </Map>
       </Box>

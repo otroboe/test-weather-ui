@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react';
 
+import { City } from '@/utils/city';
+
+interface MarkerOptions extends google.maps.MarkerOptions {
+  city: City;
+}
+
 /**
  * Copy from here:
  * https://developers.google.com/maps/documentation/javascript/react-map#marker-component
  */
-const Marker = (options: google.maps.MarkerOptions) => {
+const Marker = ({ city, ...options }: MarkerOptions) => {
   const [marker, setMarker] = useState<google.maps.Marker>();
 
   useEffect(() => {
@@ -20,11 +26,22 @@ const Marker = (options: google.maps.MarkerOptions) => {
     };
   }, [marker]);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    const onClick = () => {
+      console.log('Fetch weather for that!', city);
+    };
+
     if (marker) {
-      marker.setOptions(options);
+      marker.setOptions({
+        ...options,
+        position: {
+          lat: city.lat,
+          lng: city.lng,
+        },
+      });
+      marker.addListener('click', onClick);
     }
-  }, [marker, options]);
+  }, [marker, city, options]);
 
   return null;
 };
