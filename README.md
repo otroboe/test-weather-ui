@@ -31,6 +31,7 @@ yarn check:all
 - [React](https://reactjs.org/docs/getting-started.html)
 - [TypeScript](https://www.typescriptlang.org/docs/)
 - [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/)
+- [Material-UI](https://mui.com/getting-started/usage/)
 
 ## Instructions
 
