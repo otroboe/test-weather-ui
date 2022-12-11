@@ -2,17 +2,25 @@ import { Wrapper } from '@googlemaps/react-wrapper';
 import Box from '@mui/material/Box';
 import React from 'react';
 
+import { fetchCityList } from '@/utils/city';
+
 import Map from './Map';
 import Marker from './Marker';
 import WrapperStatus from './WrapperStatus';
 
-// Toronto for now
-const defaultCenter: google.maps.LatLngLiteral = {
-  lat: 43.7417,
-  lng: -79.3733,
+type MapWrapperProps = {
+  maxCities?: number;
 };
 
-const MapWrapper = (): JSX.Element => {
+const MapWrapper = ({ maxCities = 10 }: MapWrapperProps): JSX.Element => {
+  const cities = fetchCityList(maxCities);
+
+  // Take the top populated city as the center of the map.
+  const center: google.maps.LatLngLiteral = {
+    lat: cities[0].lat,
+    lng: cities[0].lng,
+  };
+
   return (
     <Wrapper
       apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY || ''}
@@ -24,8 +32,10 @@ const MapWrapper = (): JSX.Element => {
           width: '100%',
         }}
       >
-        <Map center={defaultCenter}>
-          <Marker position={defaultCenter} />
+        <Map center={center}>
+          {cities.map(({ lat, lng }, i) => (
+            <Marker key={i} position={{ lat, lng }} />
+          ))}
         </Map>
       </Box>
     </Wrapper>

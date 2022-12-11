@@ -13,7 +13,7 @@ interface MapProps {
   zoom?: number;
 }
 
-const Map = ({ center, children, zoom = 5 }: MapProps) => {
+const Map = ({ center, children, zoom = 4 }: MapProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<google.maps.Map>();
 
