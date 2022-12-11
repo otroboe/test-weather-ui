@@ -32,6 +32,7 @@ yarn check:all
 - [TypeScript](https://www.typescriptlang.org/docs/)
 - [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/)
 - [Material-UI](https://mui.com/getting-started/usage/)
+- Cities data imported from [here](https://simplemaps.com/data/canada-cities)
 
 ## Instructions
 
