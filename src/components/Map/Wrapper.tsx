@@ -28,7 +28,7 @@ const MapWrapper = ({ maxCities = 10 }: MapWrapperProps): JSX.Element => {
     >
       <Box
         sx={{
-          height: 400,
+          height: 600,
           width: '100%',
         }}
       >

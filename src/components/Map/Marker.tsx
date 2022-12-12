@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import { WeatherModal } from '@/components/City';
 import { City } from '@/utils/city';
 
 interface MarkerOptions extends google.maps.MarkerOptions {
@@ -12,6 +13,11 @@ interface MarkerOptions extends google.maps.MarkerOptions {
  */
 const Marker = ({ city, ...options }: MarkerOptions) => {
   const [marker, setMarker] = useState<google.maps.Marker>();
+  const [openedModal, toggleModal] = useState(false);
+
+  const handleCloseModal = () => {
+    toggleModal(false);
+  };
 
   useEffect(() => {
     if (!marker) {
@@ -27,23 +33,26 @@ const Marker = ({ city, ...options }: MarkerOptions) => {
   }, [marker]);
 
   useEffect(() => {
-    const onClick = () => {
-      console.log('Fetch weather for that!', city);
+    const handleClick = () => {
+      toggleModal(true);
     };
 
     if (marker) {
       marker.setOptions({
         ...options,
+        title: city.name,
         position: {
           lat: city.lat,
           lng: city.lng,
         },
       });
-      marker.addListener('click', onClick);
+      marker.addListener('click', handleClick);
     }
   }, [marker, city, options]);
 
-  return null;
+  return (
+    <WeatherModal city={city} open={openedModal} onClose={handleCloseModal} />
+  );
 };
 
 export default Marker;
